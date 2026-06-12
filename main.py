@@ -60,8 +60,13 @@ def main():
         snow = Snow()
         all_sprites.add(snow)
         snow_sprites.add(snow)
-
+    text_stage = 0
     time_at_click = 0
+
+    font = pygame.font.Font(None, 74)
+
+    text_surface = font.render("Hello!", True, (255, 255, 255))
+    text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
     while not done:
         for event in pygame.event.get():
@@ -104,6 +109,10 @@ def main():
 
                 if event.key == pygame.K_8:
                     rainbow_active = True
+                if event.key == pygame.K_RETURN:
+                    text_stage += 1
+                if event.key == pygame.K_x:
+                    text_stage -= 1
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_SPACE:
@@ -168,9 +177,107 @@ def main():
             if sprite.rect.left <= 0:
                 sprite.rect.left = 1
                 sprite.x_vel = -sprite.bounce * sprite.x_vel
+        if text_stage == 0:
+            text_surface = font.render("Hello! (press enter)", True, (255, 255, 255))
+        if text_stage == 1:
+            text_surface = font.render("There, you've got it!", True, (255, 255, 255))
+        if text_stage == 2:
+            text_surface = font.render("I am here to help you,", True, (255, 255, 255))
+        if text_stage == 3:
+            text_surface = font.render(
+                "Did you miss what I said?", True, (255, 255, 255)
+            )
 
+        if text_stage == 4:
+            text_surface = font.render("Then press the 'x' key", True, (255, 255, 255))
+        if text_stage == 5:
+            text_surface = font.render(
+                "Now ready to hear the controls?", True, (255, 255, 255)
+            )
+        if text_stage == 6:
+            text_surface = font.render("Hold the mouse button", True, (255, 255, 255))
+            if drag_active:
+                text_stage = 7
+
+        if text_stage == 7:
+            text_surface = font.render("..aaand release!", True, (255, 255, 255))
+        if text_stage == 8:
+            text_surface = font.render("Now any keys 1-5", True, (255, 255, 255))
+        if text_stage == 9:
+            text_surface = font.render(
+                "Thats the bounce attribute!", True, (255, 255, 255)
+            )
+        if text_stage == 10:
+            text_surface = font.render(
+                "Try them all, if you want.", True, (255, 255, 255)
+            )
+        if text_stage == 11:
+            text_surface = font.render("Hold the space key", True, (255, 255, 255))
+        if text_stage == 12:
+            text_surface = font.render("Hmm...", True, (255, 255, 255))
+        if text_stage == 13:
+            text_surface = font.render("Is that a bit boring?", True, (255, 255, 255))
+        if text_stage == 14:
+            text_surface = font.render(
+                "I've seen it so many times now...", True, (255, 255, 255)
+            )
+        if text_stage == 15:
+            text_surface = font.render(
+                "Oh! There's a funner version", True, (255, 255, 255)
+            )
+        if text_stage == 16:
+            text_surface = font.render("Hold the '8' key", True, (255, 255, 255))
+            if rainbow_active:
+                text_stage = 17
+
+        if text_stage == 17:
+            text_surface = font.render("Beautiful, isn't it?", True, (255, 255, 255))
+        if text_stage == 18:
+            while len(all_sprites) > 100:
+                all_sprites.sprites()[0].kill()
+            text_surface = font.render("...", True, (255, 255, 255))
+
+        if text_stage == 19:
+            text_surface = font.render(
+                "That was sooner than I thought", True, (255, 255, 255)
+            )
+        if text_stage == 20:
+            text_surface = font.render("Did you notice?", True, (255, 255, 255))
+        if text_stage == 21:
+            text_surface = font.render("There's less snow now", True, (255, 255, 255))
+        if text_stage == 22:
+            text_surface = font.render(
+                "I guess you should know,", True, (255, 255, 255)
+            )
+        if text_stage == 23:
+            text_surface = font.render("For me,", True, (255, 255, 255))
+        if text_stage == 24:
+            text_surface = font.render(
+                "This is the only snow left", True, (255, 255, 255)
+            )
+        if text_stage == 25:
+            while len(all_sprites) > 30:
+                all_sprites.sprites()[0].kill()
+            text_surface = font.render("Everytime it melts", True, (255, 255, 255))
+        if text_stage == 26:
+            text_surface = font.render("It'll come back", True, (255, 255, 255))
+        if text_stage == 27:
+            text_surface = font.render("If you replay,", True, (255, 255, 255))
+        if text_stage == 28:
+            while len(all_sprites) > 2:
+                all_sprites.sprites()[0].kill()
+            text_surface = font.render("I'll forget you then", True, (255, 255, 255))
+        if text_stage == 29:
+            text_surface = font.render("...", True, (255, 255, 255))
+        if text_stage == 30:
+            while len(all_sprites) > 0:
+                all_sprites.sprites()[0].kill()
+            text_surface = font.render("That's it then", True, (255, 255, 255))
+
+        text_rect = text_surface.get_rect(center=(WIDTH // 2, HEIGHT // 2))
         # --- Drawing
         screen.fill(BLACK)
+        screen.blit(text_surface, text_rect)
         all_sprites.draw(screen)
 
         pygame.display.flip()
