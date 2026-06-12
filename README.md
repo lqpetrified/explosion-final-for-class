@@ -12,7 +12,7 @@ a simple physics simulation where the player may manipulate particles in various
 
 1. Make sure you have **Python 3.13** installed.
 2. Install the dependencies:
-   *For most of you, this is just `pip install pygame-ce`.*
+	 `pip install pygame-ce`
 3. Run the game:
    ```
    python main.py
@@ -38,9 +38,7 @@ a simple physics simulation where the player may manipulate particles in various
 
 ## Assets
 
-- `assets/explosion.mp3` - https://pixabay.com/sound-effects/film-special-effects-explosion-fx-343683/
-
-*(If everything is your own, just say so. Credit anything you didn't make.)*
+- `sounds/explosion.mp3` - https://pixabay.com/sound-effects/film-special-effects-explosion-fx-343683/
 
 ## Known Bugs / Limitations
 
@@ -53,4 +51,4 @@ a simple physics simulation where the player may manipulate particles in various
 
 ## Author
 
-Lynn
+Lynn Q.
